@@ -2,7 +2,7 @@ TSSSFF-Generator
 ================
 
 ## Using
-A live example can be found on [my website](http://ripppo.me/TSSSFF-Beta/) and is free to use for all Safe for work cards.
+A live example can be found on [my github.io page](http://latent-logic.github.io/TSSSFF-Generator/).
 
 The tool is hopefully self explanatory:
  * Click and type on each field to edit them.
@@ -11,14 +11,10 @@ The tool is hopefully self explanatory:
  * Special symbols can be added with escapes such as `{earth}` A full list is given below and on the page.
 
 ##Credits and thanks.
- * Majority of code is written by [Ripp_ AKA chao-master](https://github.com/chao-master)
+ * Majority of the front-end code is written by [Ripp_ AKA chao-master](https://github.com/chao-master)
  * The LZW compression code used for encoding the card data is by [pieroxy](https://github.com/pieroxy/lz-string)
- * The backend system is modified off the offical code by
-   * [Horrible People](https://github.com/HorriblePeople)
-   * Based off a fork by [Coandco](https://github.com/coandco)
-   * With help from [Latent Logic](https://github.com/Latent-Logic)
  * Special thanks also go to
-   * [Coandco](https://github.com/coandco) Again for helpful bug reports and
+   * [Coandco](https://github.com/coandco) For helpful bug reports and
    * [MrQuallzin](https://github.com/MrQuallzin) For bug reports and helping with the pony power quick inserts.
 
 
