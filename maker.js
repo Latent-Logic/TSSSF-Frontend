@@ -1,7 +1,7 @@
 //After a page is updated this stores the edit key so we can modify it again
 var EDIT_KEY = null;
 var HASH_TO_LOAD = null;
-var HASH_TYPE = "raw";
+var HASH_TYPE = "v1";
 
 //Display error
 function mayError(errObj){
@@ -303,6 +303,7 @@ function pycard_to_html(pycard_str){
                                                           cardChanged);
 }
 
+/*
 function exportCard(id){
     $.post("/TSSSF/ponyimage.php",{
         classes:$(".card").attr("class"),
@@ -324,6 +325,7 @@ function exportCard(id){
         $("#longUrl").val(d["card_str"]);
     })
 }
+*/
 
 /*
 function exportCard(toShipbooru){
@@ -474,7 +476,7 @@ function cardSetup(){
     //Save, New & Export buttons
     $("#save").click(save)
     $("#new").click(newCard)
-    $("#export").click(exportCard)
+    //$("#export").click(exportCard)
     //$("#exportTo").click(function(){exportCard(1)})
 
     //Log number of ajax events for the spinner
