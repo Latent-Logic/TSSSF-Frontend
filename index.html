@@ -8,6 +8,7 @@
         <link href="css/material-wfont.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="cardStyling.css" rel="stylesheet">
+        <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.2/release/featherlight.min.css" type="text/css" rel="stylesheet" title="Featherlight Styles" />
         <style>
             .controls {
                 font-family: cabin;
@@ -18,6 +19,26 @@
             dd{
                 margin-left: calc(50% + 20px)!important;
             }
+            .featherlight-content {
+                min-width: 300px !important;
+            }
+            .preview-lightbox {
+                display: none;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .preview-lightbox img {
+                clear: both;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .preview-lightbox button {
+                clear: both;
+                width: 100%;
+            }
+            input[readonly].default-cursor {
+                cursor: text;
+            }
         </style>
     </head>
     <body>
@@ -25,6 +46,11 @@
         <div class="cardHelper">
             <div class="effect"></div>
             <div class="flavour"></div>
+        </div>
+
+        <div class="preview-lightbox">
+            <img width="260" class="preview-image"><br />
+            <button id="save_imgur" class="btn btn-warning">Save to imgur</button>
         </div>
 
         <main class="clearAfter container">
@@ -91,7 +117,7 @@
 
                             <button id="save" class="btn btn-success">Save</button>
                             <button id="new" class="btn btn-primary">New</button>
-			    <!--<button id="export" class="btn btn-warning">Export <em> Experimental </em></button>-->
+			    <button id="export" class="btn btn-warning">Export <em> Experimental </em></button>
                             <!--<button id="exportTo" class="btn btn-warning">Export to shipbooru</button>-->
                             <i id="working" class="fa fa-cog fa-spin fa-3x" style="display:none;vertical-align:middle;"></i>
 
@@ -101,10 +127,10 @@
                             </div>
 
                             <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="shortUrl" placeholder="Shortened Link:"/>
+                                <input class="form-control floating-label default-cursor" type="text" readonly id="shortUrl" placeholder="Shortened Link:"/>
                             </div>
                             <div class="form-group">
-                                <input class="form-control floating-label" type="text" id="longUrl" placeholder="Unshortened Link:"/>
+                                <input class="form-control floating-label default-cursor" type="text" readonly id="longUrl" placeholder="Unshortened Link:"/>
                             </div>
                             Symbols and Powers Guide:
                             <div class=row>
@@ -168,6 +194,7 @@
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//cdn.rawgit.com/noelboss/featherlight/1.3.2/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/ripples.min.js"></script>
         <script src="js/material.min.js"></script>
