@@ -1,8 +1,8 @@
-TSSSFF-Generator
-================
+TSSSF-Frontend
+==============
 
 ## Using
-A live example can be found on [my github.io page](http://latent-logic.github.io/TSSSFF-Generator/).
+A live example can be found on [my github.io page](http://latent-logic.github.io/TSSSF-Frontend/).
 
 The tool is hopefully self explanatory:
  * Click and type on each field to edit them.
