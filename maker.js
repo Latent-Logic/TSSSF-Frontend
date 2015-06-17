@@ -304,7 +304,7 @@ function pycard_to_html(pycard_str){
 };
 
 function exportCard(id){
-    $.post("/TSSSF/ponyimage.php",{
+    $.post("http://tsssf.twentymine.com/TSSSF/ponyimage.php",{
         pycard:html_to_pycard(),
         returntype:"encoded_url",
         imagetype: "vassal"
@@ -317,7 +317,7 @@ function exportCard(id){
 };
 
 function saveCardToImgur(id){
-    $.post("/TSSSF/ponyimage.php",{
+    $.post("http://tsssf.twentymine.com/TSSSF/ponyimage.php",{
         pycard:html_to_pycard(),
         returntype:"imgur",
         imagetype: "cropped"
