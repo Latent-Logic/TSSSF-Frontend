@@ -17,7 +17,7 @@ function mayError(errObj){
 
 //Blanks the cards
 function newCard(){
-    $(".card").attr("class","card pony malefemale unicorn s0");
+    $(".card").attr("class","card pony malefemale unicorn");
     $(".card .nameInput").val("");
     $(".card .attrs").val("");
     $(".card .effect").val("").change();
@@ -178,7 +178,9 @@ function html_to_pycard(){
             points = search_classes(html_element,
                                     ["s0", "s1", "s2", "s3", "s2-3", "s3-4"]);
             if (points != "")
-                pycard_symbols.push(points.slice(1))
+                pycard_symbols.push(points.slice(1));
+            else
+                pycard_symbols.push("0");
         }
 
         //Last two are "expansion" and "client", which we don't support yet
@@ -324,49 +326,11 @@ function saveCardToImgur(id){
     }, function(r){
         var d = JSON.parse(r);
         if(mayError(d)) {return;}
+        $('.featherlight-content input[type="text"]').removeClass("empty")
+        $('.featherlight-content input[type="text"]').val(d["image"]);
         open(d["image"]);
     })
 };
-
-/*
-function exportCard(toShipbooru){
-    $.post("../CardMachine/TSSSF/ponyimage.php",{
-        classes:$(".card").attr("class"),
-        name:$(".card .nameInput").val(),
-        attr:$(".card .attrs").val(),
-        effect:$(".card .effect").val(),
-        flavour:$(".card .flavour").val(),
-        copyright:$(".card .copyright").val(),
-        image:$("#image").val()
-    },function(r){
-        var d = JSON.parse(r);
-        if(mayError(d)) {return;}
-        /*if(toShipbooru){
-            var data = new FormData();
-            data.append("upload",new Blob([d.img_url],{type:"image/png"}))
-            data.append("title",$(".card .name").val());
-            data.append("attr",$(".card .attrs").val());
-            data.append("rating","q");
-            data.append("submit","Upload");
-            $.ajax({
-                url:"http://secretshipfic.booru.org/index.php?page=post&s=list",
-                type:"POST",
-                data: data,
-                processData: false,
-                contentType: false,
-                xhrFields: {
-                    withCredentials: true
-                },
-                complete:function(n,c,d){
-                    console.log(n,c,d)
-                }
-            })
-        } else {
-        open("data:image/png;base64,"+d.img_url);
-        //}
-    })
-}
-*/
 
 function cardSetup(){
     //Check the hash to see if we are loading something
@@ -383,15 +347,27 @@ function cardSetup(){
     //On card button clicks, remove other classes and add new ones.
     //Unless it is changeling, special case, just toggle.
     $(".card button").on("click", function(){
-        if ($(this).attr("value") == "changeling"){
+        var oldClass = "";
+        var newClass = $(this).attr("value");
+        if (newClass == "changeling"){
             $(".card").toggleClass($(this).attr("value"));
         } else {
             $(this).parent().children("button").each(function(){
                 if ($(this).attr("value") != "changeling"){
+                    if ($(".card").hasClass($(this).attr("value"))) {
+                        oldClass = $(this).attr("value");
+                    }
                     $(".card").removeClass($(this).attr("value"));
                 }
-            })
-            $(".card").addClass($(this).attr("value"));
+            });
+            $(".card").addClass(newClass);
+            if ((oldClass == "ship" || oldClass == "goal") &&
+                (newClass == "pony" || newClass == "start")) {
+                $(".card").addClass("malefemale");
+                $(".card").addClass("unicorn");
+            } else if (oldClass != "goal" && newClass == "goal") {
+                $(".card").addClass("s0");
+            }
         }
     })
 
