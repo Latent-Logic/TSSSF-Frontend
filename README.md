@@ -2,7 +2,7 @@ TSSSF-Frontend
 ==============
 
 ## Using
-A live example can be found on [my github.io page](http://latent-logic.github.io/TSSSF-Frontend/).
+A live example can be found on [this github.io page](http://latent-logic.github.io/TSSSF-Frontend/).
 
 The tool is hopefully self explanatory:
  * Click and type on each field to edit them.
@@ -14,14 +14,13 @@ The tool is hopefully self explanatory:
  * Majority of the front-end code is written by [Ripp_ AKA chao-master](https://github.com/chao-master)
  * The LZW compression code used for encoding the card data is by [pieroxy](https://github.com/pieroxy/lz-string)
  * Special thanks also go to
-   * [Coandco](https://github.com/coandco) For helpful bug reports and
    * [MrQuallzin](https://github.com/MrQuallzin) For bug reports and helping with the pony power quick inserts.
 
 
 ## Forking
 You are welcome to fork the project and run your own instance in terms with the LICENSE.
 
-It would be nice if improvements are fed back into the main project with pull requests but it is not necessary to do so.
+It would be nice if improvements are fed back into the main project with pull requests, but it is not necessary to do so.
 
 ##Misc
 
@@ -56,5 +55,5 @@ The following escapes are valid on the editor to create the special symbols:
   * {timeline change}
   * {play from discard}
 
-In the editor Gender/Race/Other symbols are displayed via the unicode symbols from the modified font.
-The Rules are automatically expanded, and then collapsed back for storage for the saved URL as long as their portion of the text hasn't been changed.
+In the editor gender/race/other symbols are displayed via the unicode symbols from the modified font.
+The rules are automatically expanded, and then collapsed back for storage for the saved URL as long as their portion of the text hasn't been changed.
