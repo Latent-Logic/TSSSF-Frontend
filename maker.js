@@ -33,12 +33,11 @@ function shorten_url(url, callback){
     $.ajax({
         url: "http://v.gd/create.php",
         type: "POST",
-        dataType: 'text',
+        dataType: 'json',
         data: {format:"json", url:window.location.href},
         success: function(r,s,t) 
         {
-            var d = JSON.parse(r);
-            callback(d["shorturl"]);
+            callback(r["shorturl"]);
         }
     });
 }
@@ -286,14 +285,20 @@ function pycard_to_html(pycard_str){
 }
 
 function exportCard(id){
-    $.post("http://tsssf.twentymine.com/TSSSF/ponyimage.php",{
-        pycard:html_to_pycard(),
-        returntype:"encoded_url",
-        imagetype: "vassal"
-    },function(r){
-        var d = JSON.parse(r);
-        if(mayError(d)) {return;}
-        $('.preview-lightbox img').attr('src', d["image"]);
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://tsssf.twentymine.com/TSSSF/ponyimage.php",
+        dataType: "json",
+        data: JSON.stringify({
+            pycard:html_to_pycard(),
+            returntype:"encoded_url",
+            imagetype: "vassal"
+        })
+    }).done(function(r){
+        console.log(r);
+        if(mayError(r)) {return;}
+        $('.preview-lightbox img').attr('src', r["image"]);
         $.featherlight($('.preview-lightbox'));
     });
 }
@@ -309,19 +314,22 @@ function imgurWrapper(){
 }
 
 function saveCardToImgur(my_url){
-    if (typeof my_url === "undefined")
-        my_url = "";
-    $.post("http://tsssf.twentymine.com/TSSSF/ponyimage.php", {
-        pycard:html_to_pycard(),
-        returntype:"imgur",
-        imagetype:"cropped",
-        my_url: my_url
-    }, function(r){
-        var d = JSON.parse(r);
-        if(mayError(d)) {return;}
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "http://tsssf.twentymine.com/TSSSF/ponyimage.php",
+        dataType: "json",
+        data: JSON.stringify({
+            pycard:html_to_pycard(),
+            returntype:"imgur",
+            imagetype:"cropped",
+            my_url: my_url
+        })
+    }).done(function(r){
+        if(mayError(r)) {return;}
         $('.featherlight-content input[type="text"]').removeClass("empty");
-        $('.featherlight-content input[type="text"]').val(d["image"]);
-        open(d["image"]);
+        $('.featherlight-content input[type="text"]').val(r["image"]);
+        open(r["image"]);
     });
 }
 
@@ -409,7 +417,7 @@ function cardSetup(){
 
     //Replace and create tooltip hints
     $.each(SPECIAL_REPLACE,function(key,replace){
-        console.log([key,replace,"dt[data-original-title='"+key+"']",$("dt[data-original-title='"+key+"']")]);
+        //console.log([key,replace,"dt[data-original-title='"+key+"']",$("dt[data-original-title='"+key+"']")]);
         $("dt[data-original-title='"+key+"']").attr("data-original-title",replace).tooltip();
     });
 
