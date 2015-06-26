@@ -31,7 +31,7 @@ function newCard(){
 
 function shorten_url(url, callback){
     $.ajax({
-        url: "http://v.gd/create.php",
+        url: "http://is.gd/create.php",
         type: "POST",
         dataType: 'json',
         data: {format:"json", url:window.location.href},
