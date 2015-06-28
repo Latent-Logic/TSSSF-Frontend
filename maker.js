@@ -292,7 +292,7 @@ function exportCard(id){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://tsssf.twentymine.com/TSSSF/ponyimage.php",
+        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
@@ -321,7 +321,7 @@ function saveCardToImgur(my_url){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://tsssf.twentymine.com/TSSSF/ponyimage.php",
+        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
