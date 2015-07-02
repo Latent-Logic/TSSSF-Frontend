@@ -343,7 +343,7 @@ function saveCardToDownload(){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/TSSSF/ponyimage.php",
+        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
