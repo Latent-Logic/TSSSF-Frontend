@@ -25,7 +25,7 @@ function newCard(){
     $(".card .copyright").val("WEB CARD; TSSSF by Horrible People Games.  Art by Unknown.");
     EDIT_KEY = null;
     document.location.hash = "";
-    $("#shortUrl,#longUrl,#image").val("").change().addClass("empty")
+    $("#longUrl,#image").val("").change().addClass("empty")
     $("#error").hide();
 }
 
@@ -44,11 +44,8 @@ function shorten_url(url, callback){
 
 //Saves a card
 function save(){
-    shorten_url(location.href, function(shorturl){
-        $("#shortUrl").val(shorturl);
-        $("#longUrl").val(document.location.href);
-        $("#shortUrl,#longUrl").removeClass("empty"); //Bodge fix for placeholder overlay
-    });
+    $("#longUrl").val(document.location.href);
+    $("#longUrl").removeClass("empty"); //Bodge fix for placeholder overlay
 }
 
 function doReplace(repl, str) {
@@ -190,7 +187,8 @@ function cardChanged(){
         document.location.hash = generate_hash(HASH_TYPE);
         $(window).on('hashchange', hashChanged);
     }
-    $("#shortUrl").val("");
+    $("#cardStr").val(html_to_pycard());
+    $("#cardStr").removeClass("empty"); //Bodge fix for placeholder overlay
     $("#longUrl").val("");
 }
 
