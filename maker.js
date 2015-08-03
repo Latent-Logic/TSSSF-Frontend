@@ -294,22 +294,13 @@ function exportCard(id){
     }).done(function(r){
         console.log(r);
         if(mayError(r)) {return;}
+        $('.file_links ul').css('visibility', 'hidden');
         $('.preview-lightbox img').attr('src', r["image"]);
         $.featherlight($('.preview-lightbox'));
         $('.featherlight-content div[data-tabname]').each(function(){
             $(this).attr('id', $(this).attr("data-tabname"));
         });
     });
-}
-
-function imgurWrapper(){
-    if ($('.featherlight-content input[value="linkthis"]').is(":checked")) {
-        shorten_url(generate_hash("v1"), function(s_url){
-            saveCardToImgur(s_url);
-        });
-    } else {
-        saveCardToImgur();
-    }
 }
 
 function downloadDataUrl(url, filename){
@@ -348,7 +339,7 @@ function saveCardToDownload(){
     });
 }
 
-function saveCardToImgur(my_url){
+function saveCardToFiles(){
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -356,15 +347,12 @@ function saveCardToImgur(my_url){
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
-            returntype:"imgur",
-            imagetype:$('.featherlight-content input[name=exportType]:checked').val(),
-            my_url: my_url
+            returntype:"files",
+            //imagetype:$('.featherlight-content input[name=exportType]:checked').val(),
         })
     }).done(function(r){
         if(mayError(r)) {return;}
-        $('.featherlight-content input[type="text"]').removeClass("empty");
-        $('.featherlight-content input[type="text"]').val(r["image"]);
-        open(r["image"]);
+        $('.file_links ul').css('visibility', 'visible');
     });
 }
 
@@ -522,7 +510,7 @@ function cardSetup(){
     //Save, New & Export buttons
     $("#new").click(newCard);
     $("#export").click(exportCard);
-    $("#save_imgur").click(imgurWrapper);
+    $("#save_files").click(saveCardToFiles);
     $("#save_download").click(saveCardToDownload);
 
     //Log number of ajax events for the spinner
