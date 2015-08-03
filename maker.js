@@ -25,7 +25,7 @@ function newCard(){
     $(".card .copyright").val("WEB CARD; TSSSF by Horrible People Games.  Art by Unknown.");
     EDIT_KEY = null;
     document.location.hash = "";
-    $("#longUrl,#image").val("").change().addClass("empty")
+    $("#image").val("").change().addClass("empty")
     $("#error").hide();
 }
 
@@ -40,12 +40,6 @@ function shorten_url(url, callback){
             callback(r["shorturl"]);
         }
     });
-}
-
-//Saves a card
-function save(){
-    $("#longUrl").val(document.location.href);
-    $("#longUrl").removeClass("empty"); //Bodge fix for placeholder overlay
 }
 
 function doReplace(repl, str) {
@@ -189,7 +183,6 @@ function cardChanged(){
     }
     $("#cardStr").val(html_to_pycard());
     $("#cardStr").removeClass("empty"); //Bodge fix for placeholder overlay
-    $("#longUrl").val("");
 }
 
 function hashChanged(){
@@ -527,7 +520,6 @@ function cardSetup(){
 
 
     //Save, New & Export buttons
-    $("#save").click(save);
     $("#new").click(newCard);
     $("#export").click(exportCard);
     $("#save_imgur").click(imgurWrapper);
