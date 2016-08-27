@@ -31,7 +31,7 @@ function newCard(){
 
 function shorten_url(url, callback){
     $.ajax({
-        url: "http://is.gd/create.php",
+        url: "https://is.gd/create.php",
         type: "POST",
         dataType: 'json',
         data: {format:"json", url:window.location.href},
@@ -293,7 +293,7 @@ function exportCard(id){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
+        url: "https://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
@@ -343,7 +343,7 @@ function saveCardToDownload(){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
+        url: "https://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
@@ -361,7 +361,7 @@ function saveCardToImgur(my_url){
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
+        url: "https://tsssfgen.twentymine.com/TSSSF/ponyimage.php",
         dataType: "json",
         data: JSON.stringify({
             pycard:html_to_pycard(),
